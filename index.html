@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стратегия развития PRAVO FR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            @apply bg-blue-600 text-white border-blue-600;
+        }
+        
+        /* Стили для мобильных табов */
+        @media (max-width: 768px) {
+            .mobile-tab-indicator {
+                transition: transform 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <!-- Заголовок -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                Комплексная стратегия развития PRAVO FR
+            </h1>
+            <p class="text-gray-600 text-sm md:text-base">
+                Миграция с Taplink на профессиональный сайт с SEO-оптимизацией
+            </p>
+        </div>
+
+        <!-- Навигация табов -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+            <div class="flex flex-col md:flex-row border-b border-gray-200">
+                <!-- Мобильная версия табов -->
+                <div class="md:hidden w-full">
+                    <div class="relative">
+                        <div class="mobile-tab-indicator absolute bottom-0 h-1 bg-blue-600 transition-transform duration-300" style="width: 33.33%; transform: translateX(0%)"></div>
+                        <div class="flex">
+                            <button onclick="switchTab(0)" class="tab-button flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-colors active" id="tab-0">
+                                Анализ
+                            </button>
+                            <button onclick="switchTab(1)" class="tab-button flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-colors" id="tab-1">
+                                Структура
+                            </button>
+                            <button onclick="switchTab(2)" class="tab-button flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-colors" id="tab-2">
+                                SEO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Десктопная версия табов -->
+                <div class="hidden md:flex w-full">
+                    <button onclick="switchTab(0)" class="tab-button px-6 py-4 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-colors active" id="tab-desktop-0">
+                        <span class="flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            <span>Анализ текущего состояния</span>
+                        </span>
+                    </button>
+                    <button onclick="switchTab(1)" class="tab-button px-6 py-4 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-colors" id="tab-desktop-1">
+                        <span class="flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 00-2 2m0 0V7a2 2 0 012-2h12a2 2 0 012 2v2M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2"></path>
+                            </svg>
+                            <span>Структура и контент</span>
+                        </span>
+                    </button>
+                    <button onclick="switchTab(2)" class="tab-button px-6 py-4 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 hover:border-blue-300 transition-colors" id="tab-desktop-2">
+                        <span class="flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                            <span>SEO стратегия</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контент табов -->
+        <div class="bg-white rounded-lg shadow-sm min-h-screen">
+            <!-- Таб 1: Анализ текущего состояния -->
+            <div class="tab-content active p-6" id="content-0">
+                <div class="space-y-8">
+                    <!-- Анализ текущего сайта -->
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            Анализ текущего сайта
+                        </h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Сильные стороны -->
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-green-800 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Существующая прочная основа
+                                </h3>
+                                <ul class="space-y-2 text-sm text-green-700">
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Комплексные иммиграционные услуги (визы, ВНЖ, гражданство)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Профессиональная информация о компании и квалификации
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Образовательный блог-контент и кейсы
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Подтвержденный опыт (1000+ успешных дел, 11+ лет опыта)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Четкая контактная информация (Канны, Лазурный берег)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Мультисервисный подход: бизнес, налоги, административная поддержка
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Недостатки -->
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Выявленные недостатки
+                                </h3>
+                                <ul class="space-y-2 text-sm text-red-700">
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Отсутствие прозрачной структуры цен
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Нет системы онлайн-бронирования консультаций
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Ограниченные отзывы клиентов
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Отсутствие комплексного раздела FAQ
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Нет загружаемых ресурсов (чек-листы, гайды)
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Отсутствие видео контента
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                        Ограниченная интеграция с социальными сетями
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Ожидаемые результаты -->
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            Ожидаемые результаты
+                        </h2>
+                        
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <!-- SEO производительность -->
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-blue-800 mb-4">SEO производительность</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-blue-700">Органический трафик</span>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">+300-500%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-blue-700">Топ-3 позиции</span>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">15-20 слов</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-blue-700">Локальное SEO</span>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">#1 позиция</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-blue-700">Статьи в год</span>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">50-100</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Пользовательский опыт -->
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-green-800 mb-4">Пользовательский опыт</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-green-700">Конверсия бронирований</span>
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">+25-40%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-green-700">Время на сайте</span>
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">+50%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-green-700">Мобильный опыт</span>
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">+60%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-green-700">Скачивание ресурсов</span>
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">500+/мес</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Влияние на бизнес -->
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-purple-800 mb-4">Влияние на бизнес</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-purple-700">Генерация лидов</span>
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-medium">+30-50%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-purple-700">Конверсия клиентов</span>
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-medium">+20-35%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-purple-700">Сокращение вопросов</span>
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-medium">-40%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-purple-700">Рыночная позиция</span>
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-medium">Лидер</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Заключение -->
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            Заключение
+                        </h2>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+                            <div class="prose max-w-none">
+                                <p class="text-gray-700 mb-4">
+                                    Хотя pravo.fr уже служит прочной профессиональной основой, включение функционала в стиле Taplink с комплексной русской SEO стратегией создаст лидирующую на рынке платформу для русскоязычных клиентов, ищущих юридические услуги во Франции.
+                                </p>
+                                
+                                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">Ключевые факторы успеха:</h4>
+                                        <ul class="space-y-2 text-sm text-gray-700">
+                                            <li class="flex items-start">
+                                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                Комплексное русское SEO: 100+ релевантных ключевых слов
+                                            </li>
+                                            <li class="flex items-start">
+                                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                Превосходство пользовательского опыта в стиле Taplink
+                                            </li>
+                                            <li class="flex items-start">
+                                                <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                Авторитет контента для русскоязычных иммигрантов
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">Результаты реализации:</h4>
+                                        <ul class="space-y-2 text-sm text-gray-700">
+                                            <li class="flex items-start">
+                                                <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                Доминирование на локальном рынке Французской Ривьеры
+                                            </li>
+                                            <li class="flex items-start">
+                                                <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                Оптимизация конверсий на каждой странице
+                                            </li>
+                                            <li class="flex items-start">
+                                                <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                Захват растущего русскоязычного рынка во Франции
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Таб 2: Структура и контент -->
+            <div class="tab-content p-6" id="content-1">
+                <div class="space-y-8">
+                    <!-- Структура сайта -->
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            Структура обновленного сайта
+                        </h2>
+                        
+                        <!-- Главная страница -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2v0"></path>
+                                </svg>
+                                Улучшенная главная страница
+                            </h3>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold text-blue-900 mb-3">Главный раздел</h4>
+                                        <ul class="space-y-2 text-sm text-blue-800">
+                                            <li>• Профессиональный логотип и фото команды</li>
+                                            <li>• "PRAVO FR - Русскоязычная юридическая фирма во Франции с 2014 года"</li>
+                                            <li>• Ключевые статистики: "1000+ Успешных дел | 11+ лет опыта"</li>
+                                            <li>• Выделенная кнопка "Записаться на консультацию"</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-blue-900 mb-3">Индикаторы доверия</h4>
+                                        <ul class="space-y-2 text-sm text-blue-800">
+                                            <li>• Лицензированные юридические специалисты</li>
+                                            <li>• Профессиональное страхование</li>
+                                            <li>• Статистика успеха клиентов</li>
+                                            <li>• 11+ лет работы во Франции</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Хаб услуг -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 00-2 2m0 0V7a2 2 0 012-2h12a2 2 0 012 2v2M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2"></path>
+                                </svg>
+                                Хаб услуг (сетка в стиле Taplink)
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <!-- Иммиграционные услуги -->
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-green-900 mb-4">Иммиграционные услуги</h4>
+                                    <ul class="space-y-2 text-sm text-green-700">
+                                        <li>• Долгосрочные визы D</li>
+                                        <li>• Виды на жительство (VLS-TS)</li>
+                                        <li>• Паспорт таланта (4-летние разрешения)</li>
+                                        <li>• Голубая карта ЕС</li>
+                                        <li>• Воссоединение семьи</li>
+                                        <li>• Французское гражданство/натурализация</li>
+                                        <li>• 10-летние карты резидента ЕС</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Бизнес-услуги -->
+                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-purple-900 mb-4">Бизнес-услуги</h4>
+                                    <ul class="space-y-2 text-sm text-purple-700">
+                                        <li>• Создание компании (SARL/SAS)</li>
+                                        <li>• Сертификация French Tech</li>
+                                        <li>• Заявки на статус JEI</li>
+                                        <li>• Банковская помощь</li>
+                                        <li>• Налоговая оптимизация</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Административные услуги -->
+                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-orange-900 mb-4">Административные услуги</h4>
+                                    <ul class="space-y-2 text-sm text-orange-700">
+                                        <li>• Регистрация OFII</li>
+                                        <li>• Обмен водительских прав</li>
+                                        <li>• Регистрация социального обеспечения</li>
+                                        <li>• Регистрация пенсии</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Система онлайн бронирования -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4l6 6m-6 0l6-6"></path>
+                                </svg>
+                                Система онлайн-бронирования
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-indigo-900 mb-4">Типы консультаций</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center py-2 border-b border-indigo-200">
+                                            <span class="text-sm text-indigo-800">Первичная оценка (30 мин)</span>
+                                            <span class="font-semibold text-indigo-900">€150</span>
+                                        </div>
+                                        <div class="flex justify-between items-center py-2 border-b border-indigo-200">
+                                            <span class="text-sm text-indigo-800">Проверка документов (60 мин)</span>
+                                            <span class="font-semibold text-indigo-900">€250</span>
+                                        </div>
+                                        <div class="flex justify-between items-center py-2 border-b border-indigo-200">
+                                            <span class="text-sm text-indigo-800">Сложное дело (90 мин)</span>
+                                            <span class="font-semibold text-indigo-900">€350</span>
+                                        </div>
+                                        <div class="flex justify-between items-center py-2">
+                                            <span class="text-sm text-indigo-800">Последующие сессии (30 мин)</span>
+                                            <span class="font-semibold text-indigo-900">€100</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-indigo-600 mt-3">*Все цены включают НДС</p>
+                                </div>
+                                
+                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-indigo-900 mb-4">Функции бронирования</h4>
+                                    <ul class="space-y-2 text-sm text-indigo-800">
+                                        <li>• Интеграция с календарем</li>
+                                        <li>• Автоматические письма-подтверждения</li>
+                                        <li>• Опции консультаций по Zoom/телефону</li>
+                                        <li>• Возможность загрузки документов</li>
+                                        <li>• Интеграция платежей</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Прозрачные цены -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                </svg>
+                                Раздел прозрачных цен
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-yellow-900 mb-4">Иммиграционные заявления</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Заявление на ВНЖ</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€1,500-€2,500</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Заявление на гражданство</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€2,000-€3,000</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Воссоединение семьи</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€1,200-€2,000</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Процесс апелляции</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€1,500-€2,500</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-yellow-900 mb-4">Создание бизнеса</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Создание SARL</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€1,500-€2,000</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Создание SAS</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€1,800-€2,200</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Сертификация French Tech</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€800-€1,200</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">Налоговая консультация</span>
+                                            <span class="text-sm font-semibold text-yellow-900">€200-€300/час</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-4 bg-gray-50 p-3 rounded-lg">
+                                <strong>Примечание:</strong> Все цены включают НДС. Дополнительные расходы на переводы, государственные пошлины и услуги третьих лиц указываются отдельно.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Дополнительные функции -->
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            Дополнительные функции
+                        </h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- FAQ раздел -->
+                            <div class="bg-teal-50 border border-teal-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-teal-900 mb-4">Комплексный раздел FAQ</h3>
+                                <ul class="space-y-2 text-sm text-teal-800">
+                                    <li>• Иммиграционный процесс (25-30 Q&A)</li>
+                                    <li>• Создание бизнеса (15-20 Q&A)</li>
+                                    <li>• Цены и платежи (10-12 Q&A)</li>
+                                    <li>• Требования к документам (20-25 Q&A)</li>
+                                    <li>• Сроки и процессы (15-20 Q&A)</li>
+                                </ul>
+                            </div>
+
+                            <!-- Истории успеха -->
+                            <div class="bg-rose-50 border border-rose-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-rose-900 mb-4">Истории успеха клиентов</h3>
+                                <div class="text-sm text-rose-800">
+                                    <p class="mb-3">Формат отзыва включает:</p>
+                                    <ul class="space-y-1">
+                                        <li>• Инициалы + страна происхождения</li>
+                                        <li>• Тип дела</li>
+                                        <li>• Возникшая проблема и решение</li>
+                                        <li>• Время до разрешения</li>
+                                        <li>• Анонимизированная цитата</li>
+                                    </ul>
+                                    <p class="mt-3 font-semibold">Цель: 15-20 подробных историй</p>
+                                </div>
+                            </div>
+
+                            <!-- Центр ресурсов -->
+                            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-cyan-900 mb-4">Центр загрузки ресурсов</h3>
+                                <div class="text-sm text-cyan-800">
+                                    <p class="mb-3 font-semibold">Бесплатные загрузки:</p>
+                                    <ul class="space-y-1 text-xs">
+                                        <li>• Полное руководство по иммиграции 2025</li>
+                                        <li>• Чек-лист документов для ВНЖ</li>
+                                        <li>• Создание бизнеса: пошаговое руководство</li>
+                                        <li>• Французская налоговая система</li>
+                                        <li>• Воссоединение семьи: дорожная карта</li>
+                                        <li>• Требования для французского гражданства</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Видео контент -->
+                            <div class="bg-violet-50 border border-violet-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-violet-900 mb-4">Библиотека видео контента</h3>
+                                <ul class="space-y-2 text-sm text-violet-800">
+                                    <li>• Приветственное сообщение (2-3 мин)</li>
+                                    <li>• Объяснительные видео услуг (5-7 мин)</li>
+                                    <li>• Видео отзывы клиентов (2-3 мин)</li>
+                                    <li>• Прохождение процессов (10-15 мин)</li>
+                                    <li>• Ответы на FAQ (3-5 мин)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Стратегия миграции контента -->
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            Стратегия миграции контента
+                        </h2>
+                        
+                        <div class="bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-200 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">От Taplink к профессиональному сайту</h3>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr class="border-b border-gray-300">
+                                            <th class="text-left py-2 font-semibold text-gray-900">Раздел Taplink</th>
+                                            <th class="text-left py-2 font-semibold text-gray-900">Расположение на сайте</th>
+                                            <th class="text-left py-2 font-semibold text-gray-900">SEO фокус</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Информация профиля</td>
+                                            <td class="py-3 text-gray-700">Страница "О PRAVO FR"</td>
+                                            <td class="py-3 text-gray-600 text-xs">о компании pravo fr, русскоязычные юристы франция</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Ссылки контактов</td>
+                                            <td class="py-3 text-gray-700">Улучшенная страница контактов</td>
+                                            <td class="py-3 text-gray-600 text-xs">контакты юридической фирмы франция</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Сетка услуг</td>
+                                            <td class="py-3 text-gray-700">Индивидуальные страницы услуг</td>
+                                            <td class="py-3 text-gray-600 text-xs">иммиграционные услуги франция, создание бизнеса</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Система бронирования</td>
+                                            <td class="py-3 text-gray-700">Интеграция по всему сайту</td>
+                                            <td class="py-3 text-gray-600 text-xs">запись к юристу франция, консультация онлайн</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Отзывы</td>
+                                            <td class="py-3 text-gray-700">Выделенная страница</td>
+                                            <td class="py-3 text-gray-600 text-xs">отзывы клиентов pravo fr, успешные кейсы</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">FAQ</td>
+                                            <td class="py-3 text-gray-700">Комплексный раздел</td>
+                                            <td class="py-3 text-gray-600 text-xs">часто задаваемые вопросы иммиграция франция</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Социальные ссылки</td>
+                                            <td class="py-3 text-gray-700">Интеграция по всему сайту</td>
+                                            <td class="py-3 text-gray-600 text-xs">pravo fr социальные сети</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Ресурсы</td>
+                                            <td class="py-3 text-gray-700">Центр загрузок + блог</td>
+                                            <td class="py-3 text-gray-600 text-xs">бесплатные гайды иммиграция</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-3 text-gray-700">Цены</td>
+                                            <td class="py-3 text-gray-700">Страницы прозрачных цен</td>
+                                            <td class="py-3 text-gray-600 text-xs">стоимость юридических услуг франция</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Таб 3: SEO стратегия -->
+            <div class="tab-content p-6" id="content-2">
+                <div class="space-y-8">
+                    <section>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-3">
+                            SEO стратегия и рекомендации
+                        </h2>
+                        
+                        <!-- Анализ ключевых слов -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                Стратегия ключевых слов
+                            </h3>
+                            
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                                <div class="prose max-w-none text-sm text-blue-800">
+                                    <p class="mb-4">
+                                        В этом блоке представлена стратегия подбора ключевых слов, разделённых на три уровня в зависимости от их популярности и конкурентности в поисковых системах.
+                                    </p>
+                                    <p class="mb-4">
+                                        Числа рядом с каждым запросом показывают среднее количество поисков в месяц (по данным Google).
+                                    </p>
+                                    <div class="space-y-2 mb-4">
+                                        <p><strong>1-й уровень (Высокий объём)</strong> — наиболее популярные запросы с высокой конкуренцией, приносят максимальный трафик в долгосрочной перспективе.</p>
+                                        <p><strong>2-й уровень (Средний объём)</strong> — среднечастотные запросы с умеренной конкуренцией, позволяют быстрее получать видимость и клиентов.</p>
+                                        <p><strong>3-й уровень (Низкая конкуренция)</strong> — нишевые запросы с небольшим объёмом поиска, но высокой вероятностью занять топовые позиции в короткие сроки.</p>
+                                    </div>
+                                    <p>
+                                        Такое деление помогает выстроить сбалансированную SEO-стратегию: продвигаться по популярным запросам, не упуская быстрые результаты в менее конкурентных нишах.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <!-- Высокий приоритет -->
+                                <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-red-900 mb-4">1-й уровень (Высокий объем)</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-red-800">юридические услуги франция</span>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">2,400/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-red-800">получение внж франция</span>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">3,600/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-red-800">французское гражданство</span>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">2,900/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-red-800">виза франция</span>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">8,100/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-red-800">иммиграционный адвокат</span>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">1,600/мес</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Средний приоритет -->
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-yellow-900 mb-4">2-й уровень (Средний объем)</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">русскоязычный юрист</span>
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">880/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">создание компании</span>
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">1,200/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">паспорт таланта</span>
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">590/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">воссоединение семьи</span>
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">720/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-yellow-800">регистрация бизнеса</span>
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">950/мес</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Низкий приоритет -->
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-green-900 mb-4">3-й уровень (Низкая конкуренция)</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-green-800">юрист канны</span>
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">210/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-green-800">SARL SAS регистрация</span>
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">180/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-green-800">OFII регистрация</span>
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">160/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-green-800">обмен прав франция</span>
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">320/мес</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-green-800">налоговое планирование</span>
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">290/мес</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Длинные ключевые фразы -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Длинные ключевые фразы (Long-tail)</h3>
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <ul class="space-y-2 text-sm text-purple-800">
+                                        <li>• как получить вид на жительство во франции через работу</li>
+                                        <li>• пошаговая инструкция получения французского гражданства</li>
+                                        <li>• стоимость регистрации SARL во франции с русскоязычным юристом</li>
+                                    </ul>
+                                    <ul class="space-y-2 text-sm text-purple-800">
+                                        <li>• документы для воссоединения семьи во франции список</li>
+                                        <li>• сколько стоит консультация иммиграционного юриста франция</li>
+                                        <li>• русскоязычный юрист лазурный берег канны</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Техническое SEO -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                Техническое SEO
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-indigo-900 mb-4">Структура сайта</h4>
+                                    <div class="text-sm text-indigo-800 font-mono bg-indigo-100 p-4 rounded">
+                                        <div>/ (главная)</div>
+                                        <div>├── /immigration-services/</div>
+                                        <div>│   ├── /residence-permits/</div>
+                                        <div>│   ├── /french-citizenship/</div>
+                                        <div>│   └── /family-reunification/</div>
+                                        <div>├── /business-services/</div>
+                                        <div>│   ├── /company-formation/</div>
+                                        <div>│   └── /french-tech/</div>
+                                        <div>├── /pricing/</div>
+                                        <div>├── /consultation-booking/</div>
+                                        <div>├── /faq/</div>
+                                        <div>├── /success-stories/</div>
+                                        <div>├── /resources/</div>
+                                        <div>└── /contact/</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-indigo-900 mb-4">Schema разметка</h4>
+                                    <ul class="space-y-2 text-sm text-indigo-800">
+                                        <li>• Schema организации (PRAVO FR)</li>
+                                        <li>• Schema местного бизнеса (Канны)</li>
+                                        <li>• Schema профессиональных услуг</li>
+                                        <li>• Schema отзывов клиентов</li>
+                                        <li>• Schema FAQ</li>
+                                        <li>• Schema видео контента</li>
+                                        <li>• Schema статей блога</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Локальное SEO -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                Локальное SEO
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-green-900 mb-4">Google My Business</h4>
+                                    <div class="space-y-3 text-sm text-green-800">
+                                        <div>
+                                            <span class="font-medium">Название:</span>
+                                            <p class="text-xs">PRAVO FR - Юридические услуги во Франции</p>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium">Категория:</span>
+                                            <p class="text-xs">Юридическая фирма, Иммиграционный адвокат</p>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium">Описание:</span>
+                                            <p class="text-xs">Профессиональные юридические услуги для русскоязычных во Франции. Иммиграционное право, создание бизнеса, административные вопросы. Работаем с 2014 года.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-green-900 mb-4">Локальные ключевые слова</h4>
+                                    <ul class="space-y-2 text-sm text-green-800">
+                                        <li>• юрист канны франция</li>
+                                        <li>• иммиграционный адвокат лазурный берег</li>
+                                        <li>• русскоязычный юрист ницца</li>
+                                        <li>• юридические услуги прованс</li>
+                                        <li>• адвокат по иммиграции кот д'азур</li>
+                                    </ul>
+                                    
+                                    <h4 class="font-semibold text-green-900 mb-2 mt-4">Локальный контент</h4>
+                                    <ul class="space-y-1 text-xs text-green-700">
+                                        <li>• "Юридические услуги в Каннах"</li>
+                                        <li>• "Иммиграционная помощь на Лазурном берегу"</li>
+                                        <li>• "Русскоязычное сообщество Прованса"</li>
+                                        <li>• "Переезд в регион PACA"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Meta теги для основных страниц -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Примеры мета-тегов для ключевых страниц</h3>
+                            
+                            <div class="space-y-4">
+                                <!-- Главная страница -->
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-blue-900 mb-2">Главная страница</h4>
+                                    <div class="text-sm space-y-2">
+                                        <div>
+                                            <span class="font-medium text-blue-800">Title:</span>
+                                            <p class="text-blue-700">PRAVO FR - Русскоязычные юридические услуги во Франции | Иммиграция, ВНЖ, гражданство</p>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium text-blue-800">Description:</span>
+                                            <p class="text-blue-700 text-xs">PRAVO FR - профессиональные юридические услуги для русскоязычных во Франции. Получение ВНЖ, гражданства, визы, создание бизнеса. 1000+ успешных дел с 2014 года.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Иммиграционные услуги -->
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-green-900 mb-2">Иммиграционные услуги</h4>
+                                    <div class="text-sm space-y-2">
+                                        <div>
+                                            <span class="font-medium text-green-800">Title:</span>
+                                            <p class="text-green-700">Иммиграционные услуги во Франции - ВНЖ, визы, гражданство | PRAVO FR</p>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium text-green-800">Description:</span>
+                                            <p class="text-green-700 text-xs">Полный спектр иммиграционных услуг во Франции: получение ВНЖ, долгосрочных виз, паспорта таланта, воссоединение семьи, французское гражданство.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Бизнес услуги -->
+                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-purple-900 mb-2">Бизнес услуги</h4>
+                                    <div class="text-sm space-y-2">
+                                        <div>
+                                            <span class="font-medium text-purple-800">Title:</span>
+                                            <p class="text-purple-700">Создание бизнеса во Франции - Регистрация SARL, SAS, стартапы | PRAVO FR</p>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium text-purple-800">Description:</span>
+                                            <p class="text-purple-700 text-xs">Профессиональная помощь в создании бизнеса во Франции: регистрация SARL, SAS, получение French Tech, налоговое планирование.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Аналитика и KPI -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                                Аналитика и ключевые показатели
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-orange-900 mb-4">Ключевые KPI</h4>
+                                    <ul class="space-y-2 text-sm text-orange-800">
+                                        <li>• Коэффициенты конверсии бронирования консультаций</li>
+                                        <li>• Самые популярные страницы услуг</li>
+                                        <li>• Анализ пути клиента</li>
+                                        <li>• Эффективность генерации лидов</li>
+                                        <li>• Показатели завершения консультаций</li>
+                                        <li>• Географическое распределение клиентов</li>
+                                        <li>• Метрики удержания клиентов</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                                    <h4 class="font-semibold text-orange-900 mb-4">Цели отслеживания</h4>
+                                    <ul class="space-y-2 text-sm text-orange-800">
+                                        <li>• Завершение бронирования консультации</li>
+                                        <li>• Скачивание ресурсов</li>
+                                        <li>• Отправка контактных форм</li>
+                                        <li>• Телефонные звонки</li>
+                                        <li>• Контакты WhatsApp/Telegram</li>
+                                        <li>• Взаимодействие с видео >75%</li>
+                                        <li>• Использование раздела FAQ</li>
+                                        <li>• Подписки в социальных сетях</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(index) {
+            // Скрыть все контенты
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Удалить активный класс у всех кнопок
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Показать выбранный контент
+            document.getElementById(`content-${index}`).classList.add('active');
+            
+            // Активировать соответствующие кнопки
+            document.getElementById(`tab-${index}`).classList.add('active');
+            const desktopButton = document.getElementById(`tab-desktop-${index}`);
+            if (desktopButton) {
+                desktopButton.classList.add('active');
+            }
+            
+            // Передвинуть индикатор для мобильной версии
+            const indicator = document.querySelector('.mobile-tab-indicator');
+            if (indicator) {
+                indicator.style.transform = `translateX(${index * 100}%)`;
+            }
+        }
+    </script>
+</body>
+</html>
