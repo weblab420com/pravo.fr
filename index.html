@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Стратегия развития PRAVO FR</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         .tab-content {
             display: none;
@@ -826,15 +827,61 @@
                                 
                                 <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
                                     <h4 class="font-semibold text-indigo-900 mb-4">Schema разметка</h4>
-                                    <ul class="space-y-2 text-sm text-indigo-800">
-                                        <li>• Schema организации (PRAVO FR)</li>
-                                        <li>• Schema местного бизнеса (Канны)</li>
-                                        <li>• Schema профессиональных услуг</li>
-                                        <li>• Schema отзывов клиентов</li>
-                                        <li>• Schema FAQ</li>
-                                        <li>• Schema видео контента</li>
-                                        <li>• Schema статей блога</li>
-                                    </ul>
+                                    <div class="space-y-2">
+                                        <button 
+                                            onclick="showSchema('organization')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema организации (PRAVO FR)
+                                        </button>
+                                        <button 
+                                            onclick="showSchema('localBusiness')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema местного бизнеса (Канны)
+                                        </button>
+                                        <button 
+                                            onclick="showSchema('professionalService')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema профессиональных услуг
+                                        </button>
+                                        <button 
+                                            onclick="showSchema('reviewsAggregate')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema отзывов клиентов
+                                        </button>
+                                        <button 
+                                            onclick="showSchema('faqPage')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema FAQ
+                                        </button>
+                                        <button 
+                                            onclick="showSchema('videoObject')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema видео контента
+                                        </button>
+                                        <button 
+                                            onclick="showSchema('blogPosting')"
+                                            class="w-full text-left px-3 py-2 text-sm text-indigo-800 hover:bg-indigo-100 rounded-md border border-indigo-200 hover:border-indigo-300 transition-colors"
+                                        >
+                                            • Schema статей блога
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Простой блок для отображения кода -->
+                                    <div id="schema-display" class="hidden mt-4 p-4 bg-gray-100 rounded-lg border">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <h5 class="font-semibold text-gray-900" id="schema-title"></h5>
+                                            <button onclick="copySchemaText()" class="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700">
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <pre id="schema-code" class="text-xs text-gray-800 overflow-auto max-h-40 whitespace-pre-wrap"></pre>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -990,33 +1037,97 @@
     <script>
         function switchTab(index) {
             // Скрыть все контенты
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
+            var contents = document.querySelectorAll('.tab-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
             
             // Удалить активный класс у всех кнопок
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
+            var buttons = document.querySelectorAll('.tab-button');
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].classList.remove('active');
+            }
             
             // Показать выбранный контент
-            document.getElementById(`content-${index}`).classList.add('active');
+            document.getElementById('content-' + index).classList.add('active');
             
             // Активировать соответствующие кнопки
-            document.getElementById(`tab-${index}`).classList.add('active');
-            const desktopButton = document.getElementById(`tab-desktop-${index}`);
+            document.getElementById('tab-' + index).classList.add('active');
+            var desktopButton = document.getElementById('tab-desktop-' + index);
             if (desktopButton) {
                 desktopButton.classList.add('active');
             }
             
             // Передвинуть индикатор для мобильной версии
-            const indicator = document.querySelector('.mobile-tab-indicator');
+            var indicator = document.querySelector('.mobile-tab-indicator');
             if (indicator) {
-                indicator.style.transform = `translateX(${index * 100}%)`;
+                indicator.style.transform = 'translateX(' + (index * 100) + '%)';
+            }
+        }
+
+        // Простые Schema шаблоны
+        var schemas = {
+            organization: {
+                title: 'Schema организации (PRAVO FR)',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "Organization",\n  "name": "PRAVO FR",\n  "legalName": "PRAVO FR",\n  "url": "https://pravo.fr",\n  "logo": "https://pravo.fr/logo.png",\n  "email": "info@pravo.fr",\n  "telephone": "+33-6-34-38-29-55",\n  "address": {\n    "@type": "PostalAddress",\n    "streetAddress": "— укажите улицу —",\n    "addressLocality": "Cannes",\n    "postalCode": "—",\n    "addressCountry": "FR",\n    "region": "Provence-Alpes-Côte d\'Azur"\n  }\n}'
+            },
+            localBusiness: {
+                title: 'Schema местного бизнеса (Канны)',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "LegalService",\n  "name": "PRAVO FR",\n  "url": "https://pravo.fr",\n  "telephone": "+33-6-34-38-29-55",\n  "address": {\n    "@type": "PostalAddress",\n    "streetAddress": "— укажите улицу —",\n    "addressLocality": "Cannes",\n    "addressCountry": "FR"\n  },\n  "geo": {\n    "@type": "GeoCoordinates",\n    "latitude": 43.552847,\n    "longitude": 7.017369\n  }\n}'
+            },
+            professionalService: {
+                title: 'Schema профессиональных услуг',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "ProfessionalService",\n  "name": "PRAVO FR",\n  "url": "https://pravo.fr",\n  "serviceType": [\n    "Immigration Law Consulting",\n    "Company Formation",\n    "Administrative Services"\n  ],\n  "areaServed": ["France"]\n}'
+            },
+            reviewsAggregate: {
+                title: 'Schema отзывов клиентов',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "Organization",\n  "name": "PRAVO FR",\n  "url": "https://pravo.fr",\n  "aggregateRating": {\n    "@type": "AggregateRating",\n    "ratingValue": "4.9",\n    "reviewCount": "125"\n  }\n}'
+            },
+            faqPage: {
+                title: 'Schema FAQ',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "FAQPage",\n  "mainEntity": [\n    {\n      "@type": "Question",\n      "name": "Как получить ВНЖ во Франции?",\n      "acceptedAnswer": {\n        "@type": "Answer",\n        "text": "Выберите подходящую категорию, подготовьте пакет документов и подайте заявление через префектуру..."\n      }\n    }\n  ]\n}'
+            },
+            videoObject: {
+                title: 'Schema видео контента',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "VideoObject",\n  "name": "Объяснение процедуры ВНЖ",\n  "description": "Краткое видео о шагах получения ВНЖ во Франции.",\n  "thumbnailUrl": ["https://pravo.fr/video/thumbs/vid1.jpg"],\n  "uploadDate": "2025-01-15",\n  "contentUrl": "https://pravo.fr/videos/residence-permit.mp4"\n}'
+            },
+            blogPosting: {
+                title: 'Schema статей блога',
+                code: '{\n  "@context": "https://schema.org",\n  "@type": "BlogPosting",\n  "headline": "Новые требования для получения ВНЖ во Франции в 2025",\n  "author": { "@type": "Person", "name": "PRAVO FR" },\n  "datePublished": "2025-02-01",\n  "publisher": {\n    "@type": "Organization",\n    "name": "PRAVO FR",\n    "logo": { "@type": "ImageObject", "url": "https://pravo.fr/logo.png" }\n  }\n}'
+            }
+        };
+
+        var currentSchemaCode = '';
+
+        function showSchema(type) {
+            var schema = schemas[type];
+            if (schema) {
+                document.getElementById('schema-title').textContent = schema.title;
+                var fullCode = '<script type="application/ld+json">\n' + schema.code + '\n<\/script>';
+                document.getElementById('schema-code').textContent = fullCode;
+                document.getElementById('schema-display').classList.remove('hidden');
+                currentSchemaCode = fullCode;
+            }
+        }
+
+        function copySchemaText() {
+            if (currentSchemaCode) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(currentSchemaCode);
+                    alert('Код скопирован в буфер обмена!');
+                } else {
+                    var textArea = document.createElement('textarea');
+                    textArea.value = currentSchemaCode;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Код скопирован в буфер обмена!');
+                }
             }
         }
     </script>
+
+
 </body>
 </html>
